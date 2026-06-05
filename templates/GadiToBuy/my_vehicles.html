@@ -1,0 +1,91 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<section class="vehicle-page">
+
+    <h1 class="page-title">
+        My Vehicles
+    </h1>
+
+    <div class="vehicle-container">
+
+        {% for vehicle in vehicles %}
+
+        <div class="vehicle-card">
+
+            {% if vehicle.image %}
+                <img
+                    src="{{ vehicle.image.url }}"
+                    alt="{{ vehicle.title }}"
+                    class="vehicle-image"
+                >
+            {% endif %}
+
+            <div class="vehicle-content">
+
+                <h2>{{ vehicle.title }}</h2>
+
+                <p><strong>Brand:</strong> {{ vehicle.brand }}</p>
+
+                <p><strong>Model:</strong> {{ vehicle.model }}</p>
+
+                <p><strong>Year:</strong> {{ vehicle.year }}</p>
+
+                <p class="price">
+                    ₹{{ vehicle.price }}
+                </p>
+
+                <div class="vehicle-actions">
+
+                    <a
+                        href="/vehicle/{{ vehicle.id }}/"
+                        class="details-btn"
+                    >
+                        View
+                    </a>
+
+                    <a
+                        href="/edit-vehicle/{{ vehicle.id }}/"
+                        class="edit-btn"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        href="/delete-vehicle/{{ vehicle.id }}/"
+                        class="delete-btn"
+                        onclick="return confirm('Are you sure you want to delete this vehicle?')"
+                    >
+                        Delete
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div style="text-align:center; width:100%; margin-top:50px;">
+
+            <h2>No Vehicles Found</h2>
+
+            <p>
+                You have not posted any vehicles yet.
+            </p>
+
+            <a href="/sell/" class="details-btn">
+                Post Your First Vehicle
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

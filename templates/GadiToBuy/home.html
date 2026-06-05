@@ -1,0 +1,179 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            #1 Trusted Vehicle Marketplace
+        </span>
+
+        <h1>
+            Buy & Sell Vehicles <br>
+            With Confidence
+        </h1>
+
+        <p>
+            Discover thousands of verified cars, bikes, scooters,
+            and commercial vehicles across India.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/vehicles/" class="btn-primary">
+                Browse Vehicles
+            </a>
+
+            <a href="#" class="btn-secondary">
+                Sell Vehicle
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="company-banner">
+
+    <div>
+
+        <h2>
+            India's Fastest Growing
+            Vehicle Marketplace
+        </h2>
+
+        <p>
+            Trusted by thousands of buyers and sellers.
+        </p>
+
+    </div>
+
+</section>
+<section class="features">
+
+    <div class="feature-card">
+        <h3>🔒 Verified Sellers</h3>
+        <p>Every listing is reviewed for better trust.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>🚗 Huge Collection</h3>
+        <p>Cars, Bikes, Scooters and Commercial Vehicles.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>⚡ Fast Deals</h3>
+        <p>Connect directly with buyers and sellers.</p>
+    </div>
+
+</section>
+
+<section class="about-company">
+
+    <h2>About GadiToBuy</h2>
+
+    <p>
+        GadiToBuy helps people buy and sell second-hand vehicles
+        across India. Our mission is to make vehicle transactions
+        transparent, safe, and convenient for everyone.
+    </p>
+
+</section>
+
+<section class="stats">
+
+    <div class="stat-box">
+        <h2>10K+</h2>
+        <p>Vehicles Listed</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>5K+</h2>
+        <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>100+</h2>
+        <p>Cities Covered</p>
+    </div>
+
+</section>
+<section class="featured-section">
+
+    <h2 class="section-title">
+        Featured Vehicles
+    </h2>
+
+    <div class="vehicle-container">
+
+        {% for vehicle in featured_vehicles %}
+
+        <div class="vehicle-card">
+
+            {% if vehicle.image %}
+            <img src="{{ vehicle.image.url }}"
+                 class="vehicle-image">
+            {% endif %}
+
+            <div class="vehicle-content">
+
+                <h2>{{ vehicle.title }}</h2>
+
+                <p>{{ vehicle.brand }}</p>
+
+                <p class="price">
+                    ₹{{ vehicle.price }}
+                </p>
+
+                <a href="/vehicle/{{ vehicle.id }}/"
+                   class="details-btn">
+                    View Details
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+<section class="testimonials">
+
+    <h2 class="section-title">
+        What Our Customers Say
+    </h2>
+
+    <div class="testimonial-container">
+
+        <div class="testimonial-card">
+            <p>
+                "Sold my bike within 3 days!"
+            </p>
+
+            <h4>- Rahul Kumar</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>
+                "Found my dream car at a great price."
+            </p>
+
+            <h4>- Priya Sharma</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>
+                "Simple and trustworthy platform."
+            </p>
+
+            <h4>- Arjun Reddy</h4>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

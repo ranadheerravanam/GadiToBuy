@@ -1,0 +1,83 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>Edit Vehicle</h1>
+
+    <p class="form-subtitle">
+        Update your vehicle information below.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+
+        <div class="form-group">
+            {{ form.brand.label_tag }}
+            {{ form.brand }}
+        </div>
+
+        <div class="form-group">
+            {{ form.model.label_tag }}
+            {{ form.model }}
+        </div>
+
+        <div class="form-group">
+            {{ form.year.label_tag }}
+            {{ form.year }}
+        </div>
+
+        <div class="form-group">
+            {{ form.price.label_tag }}
+            {{ form.price }}
+        </div>
+
+        <div class="form-group">
+            {{ form.kilometers.label_tag }}
+            {{ form.kilometers }}
+        </div>
+
+        <div class="form-group">
+            {{ form.fuel_type.label_tag }}
+            {{ form.fuel_type }}
+        </div>
+
+        <div class="form-group">
+            {{ form.location.label_tag }}
+            {{ form.location }}
+        </div>
+
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+        </div>
+
+        <div class="form-group">
+            {{ form.image.label_tag }}
+            {{ form.image }}
+        </div>
+
+        <div class="button-group">
+
+            <button type="submit" class="sell-btn">
+                💾 Save Changes
+            </button>
+
+            <a href="/my-vehicles/" class="cancel-btn">
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

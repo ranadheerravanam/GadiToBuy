@@ -1,0 +1,44 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<div class="detail-container">
+
+    <div class="detail-card">
+
+        {% if vehicle.image %}
+        <img src="{{ vehicle.image.url }}"
+             class="detail-image">
+        {% endif %}
+
+        <h1>{{ vehicle.title }}</h1>
+
+        <div class="detail-grid">
+
+            <p><strong>Brand:</strong> {{ vehicle.brand }}</p>
+
+            <p><strong>Model:</strong> {{ vehicle.model }}</p>
+
+            <p><strong>Year:</strong> {{ vehicle.year }}</p>
+
+            <p><strong>Price:</strong> ₹{{ vehicle.price }}</p>
+
+            <p><strong>Kilometers:</strong> {{ vehicle.kilometers }}</p>
+
+            <p><strong>Fuel:</strong> {{ vehicle.fuel_type }}</p>
+
+            <p><strong>Location:</strong> {{ vehicle.location }}</p>
+
+        </div>
+
+        <h3>Description</h3>
+
+        <p class="description">
+            {{ vehicle.description }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

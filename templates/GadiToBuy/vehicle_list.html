@@ -1,0 +1,69 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<section class="vehicle-page">
+
+    <h1 class="page-title">
+        Available Vehicles
+    </h1>
+
+    <form method="GET" class="search-form">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search by Brand, Model..."
+            value="{{ query|default:'' }}"
+            class="search-input"
+        >
+
+        <button class="search-btn">
+            Search
+        </button>
+
+    </form>
+
+    <div class="vehicle-container">
+
+        {% for vehicle in vehicles %}
+
+        <div class="vehicle-card">
+
+            {% if vehicle.image %}
+            <img src="{{ vehicle.image.url }}"
+                 class="vehicle-image">
+            {% endif %}
+
+            <div class="vehicle-content">
+
+                <h2>
+                    <a href="/vehicle/{{ vehicle.id }}/">
+                        {{ vehicle.title }}
+                    </a>
+                </h2>
+
+                <p>🚘 {{ vehicle.brand }}</p>
+
+                <p>📅 {{ vehicle.year }}</p>
+
+                <p class="price">
+                    ₹{{ vehicle.price }}
+                </p>
+
+                <a href="/vehicle/{{ vehicle.id }}/"
+                   class="details-btn">
+                   View Details
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

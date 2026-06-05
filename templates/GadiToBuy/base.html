@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GadiToBuy</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="logo">
+        🚗 GadiToBuy
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/vehicles/">Vehicles</a></li>
+
+        <li><a href="#">About</a></li>
+
+        <li><a href="#">Contact</a></li>
+
+        {% if user.is_authenticated %}
+
+            <li>
+                <a href="/my-vehicles/">
+                    My Vehicles
+                </a>
+            </li>
+
+            <li>
+                <a href="/sell/">
+                    Sell Vehicle
+                </a>
+            </li>
+
+            <li>
+                <form action="/logout/" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">
+                        Logout
+                    </button>
+                </form>
+            </li>
+
+        {% else %}
+
+            <li>
+                <a href="/accounts/register/">
+                    Register
+                </a>
+            </li>
+
+            <li>
+                <a href="/login/">
+                    Login
+                </a>
+            </li>
+
+        {% endif %}
+
+    </ul>
+
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<footer class="footer">
+
+    <h2>🚗 GadiToBuy</h2>
+
+    <p>
+        India's trusted marketplace for buying and selling pre-owned vehicles.
+    </p>
+
+    <p class="copyright">
+        © 2026 GadiToBuy. All Rights Reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>
