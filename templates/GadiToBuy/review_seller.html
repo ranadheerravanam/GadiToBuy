@@ -1,0 +1,25 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>Review Seller</h1>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button class="sell-btn">
+
+            Submit Review
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

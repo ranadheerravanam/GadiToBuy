@@ -10,6 +10,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from .models import Vehicle
 from .forms import VehicleForm
+from .models import Inquiry
+from .forms import InquiryForm
+from .models import Favorite
 @login_required
 def edit_vehicle(request, vehicle_id):
 
@@ -165,4 +168,122 @@ def my_vehicles(request):
         {
             'vehicles': vehicles
         }
+    )
+@login_required
+def contact_seller(request, vehicle_id):
+
+    vehicle = get_object_or_404(
+        Vehicle,
+        id=vehicle_id
+    )
+
+    if request.method == 'POST':
+
+        form = InquiryForm(request.POST)
+
+        if form.is_valid():
+
+            inquiry = form.save(commit=False)
+
+            inquiry.vehicle = vehicle
+            inquiry.buyer = request.user
+            inquiry.seller = vehicle.seller
+
+            inquiry.save()
+
+            return redirect('/vehicles/')
+
+    else:
+
+        form = InquiryForm()
+
+    return render(
+        request,
+        'GadiToBuy/contact_seller.html',
+        {
+            'vehicle': vehicle,
+            'form': form
+        }
+    )
+@login_required
+def my_inquiries(request):
+
+    inquiries = Inquiry.objects.filter(
+        seller=request.user
+    ).order_by('-created_at')
+
+    return render(
+        request,
+        'GadiToBuy/my_inquiries.html',
+        {
+            'inquiries': inquiries
+        }
+    )
+@login_required
+def add_favorite(request, vehicle_id):
+
+    vehicle = get_object_or_404(
+        Vehicle,
+        id=vehicle_id
+    )
+
+    Favorite.objects.get_or_create(
+        user=request.user,
+        vehicle=vehicle
+    )
+
+    return redirect(
+        f'/vehicle/{vehicle_id}/'
+    )
+@login_required
+def my_favorites(request):
+
+    favorites = Favorite.objects.filter(
+        user=request.user
+    )
+
+    return render(
+        request,
+        'GadiToBuy/my_favorites.html',
+        {
+            'favorites': favorites
+        }
+    )
+@login_required
+def remove_favorite(request, vehicle_id):
+
+    Favorite.objects.filter(
+        user=request.user,
+        vehicle_id=vehicle_id
+    ).delete()
+
+    return redirect('/my-favorites/')
+@login_required
+def review_seller(request, seller_id):
+
+    seller = User.objects.get(id=seller_id)
+
+    if request.method == 'POST':
+
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+
+            review = form.save(commit=False)
+
+            review.seller = seller
+            review.buyer = request.user
+
+            review.save()
+
+            return redirect('home')
+
+    else:
+
+        form = ReviewForm()
+
+    return render(
+        request,
+        'GadiToBuy/review_seller.html',
+        {'form': form}
     )

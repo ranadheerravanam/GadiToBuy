@@ -10,7 +10,23 @@
         <img src="{{ vehicle.image.url }}"
              class="detail-image">
         {% endif %}
+<h3>Gallery Images: {{ vehicle.images.count }}</h3>
 
+<div class="gallery">
+
+{% for image in vehicle.images.all %}
+
+    <img
+        src="{{ image.image.url }}"
+        class="gallery-image">
+
+{% empty %}
+
+    <p>No gallery images found.</p>
+
+{% endfor %}
+
+</div>
         <h1>{{ vehicle.title }}</h1>
 
         <div class="detail-grid">
@@ -22,6 +38,7 @@
             <p><strong>Year:</strong> {{ vehicle.year }}</p>
 
             <p><strong>Price:</strong> ₹{{ vehicle.price }}</p>
+            
 
             <p><strong>Kilometers:</strong> {{ vehicle.kilometers }}</p>
 
@@ -32,13 +49,60 @@
         </div>
 
         <h3>Description</h3>
+        
 
         <p class="description">
             {{ vehicle.description }}
         </p>
+        
+<h3 class="vehicle-status">
+    Status: {{ vehicle.status }}
+</h3>
+        <br>
+         <a
+    href="/contact-seller/{{ vehicle.id }}/"
+    class="btn-primary">
+
+    Contact Seller
+
+</a>
+<a
+    href="/review-seller/{{ vehicle.seller.id }}/"
+    class="details-btn">
+
+    ⭐ Review Seller
+
+</a>
+<a
+    href="/favorite/{{ vehicle.id }}/"
+    class="details-btn">
+
+    ❤️ Add to Wishlist
+
+</a>
 
     </div>
 
 </div>
+<h2>Seller Reviews</h2>
 
+{% for review in reviews %}
+
+<div class="review-card">
+
+    <strong>
+        {{ review.buyer.username }}
+    </strong>
+
+    <p>
+        ⭐ {{ review.rating }}/5
+    </p>
+
+    <p>
+        {{ review.comment }}
+    </p>
+
+</div>
+
+{% endfor %}
 {% endblock %}

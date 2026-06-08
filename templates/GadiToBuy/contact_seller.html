@@ -1,0 +1,31 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>Contact Seller</h1>
+
+    <h3>{{ vehicle.title }}</h3>
+
+    <br>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button
+            type="submit"
+            class="sell-btn">
+
+            Send Inquiry
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

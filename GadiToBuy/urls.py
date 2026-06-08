@@ -8,9 +8,15 @@ from .views import (
     my_vehicles,
     edit_vehicle,
     delete_vehicle,
+    contact_seller,
+    my_inquiries,
+    add_favorite,
+    my_favorites,
+    review_seller,
 )
 
 urlpatterns = [
+
     path('', home, name='home'),
 
     path(
@@ -47,5 +53,32 @@ urlpatterns = [
         'delete-vehicle/<int:vehicle_id>/',
         delete_vehicle,
         name='delete_vehicle'
+    ),
+
+    path(
+        'contact-seller/<int:vehicle_id>/',
+        contact_seller,
+        name='contact_seller'
+    ),
+
+    path(
+        'my-inquiries/',
+        my_inquiries,
+        name='my_inquiries'
+    ),
+    path(
+    'favorite/<int:vehicle_id>/',
+    add_favorite,
+    name='add_favorite'
+    ),
+    path(
+    'my-favorites/',
+    my_favorites,
+    name='my_favorites'
+  ),
+    path(
+    'review-seller/<int:seller_id>/',
+    review_seller,
+    name='review_seller'
     ),
 ]

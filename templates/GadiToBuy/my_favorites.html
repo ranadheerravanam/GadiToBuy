@@ -1,0 +1,58 @@
+{% extends 'GadiToBuy/base.html' %}
+
+{% block content %}
+
+<h1 class="page-title">
+    My Wishlist ❤️
+</h1>
+
+<div class="vehicle-container">
+
+{% for favorite in favorites %}
+
+<div class="vehicle-card">
+
+    <img
+        src="{{ favorite.vehicle.image.url }}"
+        class="vehicle-image"
+    >
+
+    <div class="vehicle-content">
+
+        <h2>
+            {{ favorite.vehicle.title }}
+        </h2>
+
+        <div class="price">
+            ₹{{ favorite.vehicle.price }}
+        </div>
+
+        <a
+            href="/vehicle/{{ favorite.vehicle.id }}/"
+            class="details-btn">
+
+            View Vehicle
+
+        </a>
+         <a
+    href="/remove-favorite/{{ favorite.vehicle.id }}/"
+    class="delete-btn">
+
+    Remove
+
+</a>
+    </div>
+
+</div>
+
+{% empty %}
+
+<h2>
+    No vehicles in wishlist yet.
+</h2>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

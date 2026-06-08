@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GadiToBuy</title>
@@ -26,8 +27,17 @@
         <li><a href="#">Contact</a></li>
 
         {% if user.is_authenticated %}
-
+<li>
+    <a href="/my-favorites/">
+        Wishlist ❤️
+    </a>
+</li>
             <li>
+                <li>
+    <a href="/my-inquiries/">
+        My Inquiries
+    </a>
+</li>
                 <a href="/my-vehicles/">
                     My Vehicles
                 </a>
@@ -70,19 +80,10 @@
 
 {% block content %}
 {% endblock %}
-
 <footer class="footer">
-
-    <h2>🚗 GadiToBuy</h2>
-
-    <p>
-        India's trusted marketplace for buying and selling pre-owned vehicles.
-    </p>
-
-    <p class="copyright">
-        © 2026 GadiToBuy. All Rights Reserved.
-    </p>
-
+    <h2>GadiToBuy</h2>
+    <p>Premium Vehicle Marketplace</p>
+    <p>Developed by Ranadheer</p>
 </footer>
 
 </body>
