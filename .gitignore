@@ -22,9 +22,6 @@ db.sqlite3
 /media/*
 /staticfiles/
 /staticfiles/*
-static/
-static/*
-
 # If using django-storages or similar
 # .cache/
 
