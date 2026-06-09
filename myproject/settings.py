@@ -84,8 +84,15 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gaditobuy',
+        'USER': 'gaditobuy_user',
+        'PASSWORD': 'LQWiOG7MvtNMuFSw3RNaDMtyKuclhwPD',
+        'HOST': 'dpg-d8jq62eq1p3s73a0o3i0-a.oregon-postgres.render.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
 
