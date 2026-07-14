@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gaditobuy',
-        'USER': 'gaditobuy_user',
-        'PASSWORD': 'LQWiOG7MvtNMuFSw3RNaDMtyKuclhwPD',
-        'HOST': 'dpg-d8jq62eq1p3s73a0o3i0-a.oregon-postgres.render.com',
+        'NAME': 'neondb',
+        'USER': 'neondb_owner',
+        'PASSWORD': 'npg_7RjFlCtDqgP6',
+        'HOST': 'ep-patient-pond-atrec7ft.c-9.us-east-1.aws.neon.tech',
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',

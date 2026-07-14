@@ -76,7 +76,7 @@ class Inquiry(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True
-    )
+    )   
 
     def __str__(self):
         return f"{self.buyer.username} -> {self.vehicle.title}"
@@ -110,7 +110,7 @@ class VehicleImage(models.Model):
 
     def __str__(self):
         return self.vehicle.title
-class Review(models.Model):
+class Review(models.Model):  
 
     seller = models.ForeignKey(
         User,
